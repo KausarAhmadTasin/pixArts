@@ -10,3 +10,9 @@
 .play-right-font {
   font-family: "Playwrite US Trad", cursive;
 }
+
+.gradient-text {
+  background: linear-gradient(to right, #3771fe, #a15820);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

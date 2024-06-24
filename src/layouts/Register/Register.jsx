@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import SocialLinks from "../../components/SocialLinks/SocialLinks";
 
-const Login = () => {
+const Register = () => {
   return (
     <div>
-      <div className="hero bg-base-200 h-screen">
-        <div className="hero-content flex-col md:flex-row gap-x-8">
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col md:flex-row-reverse gap-x-12">
           <div className="text-center md:text-left md:w-1/3">
             <h1 className="text-5xl py-2 font-bold text-[#3771FE] gradient-text">
-              Login now!
+              Register Now!
             </h1>
             <p className="py-6 text-gray-500 font-normal ">
               Explore art pictures as a journey through the myriad expressions
@@ -41,18 +41,18 @@ const Login = () => {
                   required
                 />
                 <label className="label label-text-alt justify-start">
-                  Don&apos;t have an account?{" "}
+                  Already have an account?{" "}
                   <Link
-                    to="/register"
+                    to="/login"
                     className=" link link-hover decoration-blue-600"
                   >
-                    <span className="text-blue-600 ml-1">Register</span>
+                    <span className="text-blue-600 ml-1">Login</span>
                   </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
                 <button className="btn bg-[#7eaf3e] hover:text-[#7eaf3e] text-white text-lg">
-                  Login
+                  Register
                 </button>
                 <SocialLinks />
               </div>
@@ -64,4 +64,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
