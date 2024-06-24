@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Playwrite US Trad";
+  src: url("/PlaywriteUSTrad-Regular.ttf");
+}
+
+.play-right-font {
+  font-family: "Playwrite US Trad", cursive;
+}
