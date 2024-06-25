@@ -1,9 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider/AuthContext";
+import { useAlert } from "react-alert";
 
 const Register = () => {
   const [textPassword, setTextPassword] = useState(false);
+  const alert = useAlert();
+
+  const { createUser, setErrorMessage } = useContext(AuthContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+
+    createUser(email, password, name, photo)
+      .then(() => {
+        alert.show("registered", {
+          type: "success",
+        });
+        console.log("first");
+      })
+      .catch(() => {
+        alert.show("failed", {
+          type: "error",
+        });
+      });
+  };
 
   return (
     <div>
@@ -21,7 +48,7 @@ const Register = () => {
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-            <form className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -32,6 +59,7 @@ const Register = () => {
                   className="input input-bordered"
                   required
                   autoFocus
+                  name="name"
                 />
               </div>
               <div className="form-control">
@@ -43,6 +71,7 @@ const Register = () => {
                   placeholder="Ex: abdul.karim@gamil.com"
                   className="input input-bordered"
                   required
+                  name="email"
                 />
               </div>
               <div className="form-control">
@@ -54,6 +83,7 @@ const Register = () => {
                   placeholder="Ex: photo.com"
                   className="input input-bordered"
                   required
+                  name="photo"
                 />
               </div>
               <div className="form-control">
@@ -66,6 +96,7 @@ const Register = () => {
                     placeholder="Password"
                     className="input input-bordered w-full"
                     required
+                    name="password"
                   />
                   <div
                     onClick={() => setTextPassword(!textPassword)}
