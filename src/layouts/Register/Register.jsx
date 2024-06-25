@@ -1,11 +1,14 @@
+import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import SocialLinks from "../../components/SocialLinks/SocialLinks";
 
 const Register = () => {
+  const [textPassword, setTextPassword] = useState(false);
+
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col md:flex-row-reverse gap-x-12">
+        <div className="hero-content flex-col md:flex-row-reverse gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
             <h1 className="text-5xl py-2 font-bold text-[#3771FE] gradient-text">
               Register Now!
@@ -21,11 +24,34 @@ const Register = () => {
             <form className="card-body">
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ex: Abdul Karim"
+                  className="input input-bordered"
+                  required
+                  autoFocus
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
-                  placeholder="email"
+                  placeholder="Ex: abdul.karim@gamil.com"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ex: photo.com"
                   className="input input-bordered"
                   required
                 />
@@ -34,12 +60,20 @@ const Register = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    type={textPassword ? "" : "password"}
+                    placeholder="Password"
+                    className="input input-bordered w-full"
+                    required
+                  />
+                  <div
+                    onClick={() => setTextPassword(!textPassword)}
+                    className="absolute top-1/3 right-2 text-gray-500"
+                  >
+                    {textPassword ? <FiEye /> : <FiEyeOff />}
+                  </div>
+                </div>
                 <label className="label label-text-alt justify-start">
                   Already have an account?{" "}
                   <Link
@@ -50,11 +84,11 @@ const Register = () => {
                   </Link>
                 </label>
               </div>
+
               <div className="form-control mt-6">
                 <button className="btn bg-[#7eaf3e] hover:text-[#7eaf3e] text-white text-lg">
                   Register
                 </button>
-                <SocialLinks />
               </div>
             </form>
           </div>

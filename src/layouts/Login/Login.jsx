@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import SocialLinks from "../../components/SocialLinks/SocialLinks";
+import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Login = () => {
+  const [textPassword, setTextPassword] = useState(false);
+
   return (
     <div>
       <div className="hero bg-base-200 h-screen">
@@ -25,21 +29,32 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
-                  placeholder="email"
+                  placeholder="Ex: abdul.karim@gamil.com"
                   className="input input-bordered"
                   required
+                  autoFocus
                 />
               </div>
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  required
-                />
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={textPassword ? "" : "password"}
+                      placeholder="Password"
+                      className="input input-bordered w-full"
+                      required
+                    />
+                    <div
+                      onClick={() => setTextPassword(!textPassword)}
+                      className="absolute top-1/3 right-2 text-gray-500"
+                    >
+                      {textPassword ? <FiEye /> : <FiEyeOff />}
+                    </div>
+                  </div>
+                </div>
                 <label className="label label-text-alt justify-start">
                   Don&apos;t have an account?{" "}
                   <Link
