@@ -1,13 +1,31 @@
 import { Link } from "react-router-dom";
 import SocialLinks from "../../components/SocialLinks/SocialLinks";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { AuthContext } from "../../provider/AuthProvider/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const [textPassword, setTextPassword] = useState(false);
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then(() => {
+        toast.success("Logged in!");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   return (
     <div>
+      <ToastContainer />
       <div className="hero bg-base-200 h-screen">
         <div className="hero-content flex-col md:flex-row gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
@@ -22,7 +40,7 @@ const Login = () => {
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -33,6 +51,7 @@ const Login = () => {
                   className="input input-bordered"
                   required
                   autoFocus
+                  name="email"
                 />
               </div>
               <div className="form-control">
@@ -46,6 +65,7 @@ const Login = () => {
                       placeholder="Password"
                       className="input input-bordered w-full"
                       required
+                      name="password"
                     />
                     <div
                       onClick={() => setTextPassword(!textPassword)}

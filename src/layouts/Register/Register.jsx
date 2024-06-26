@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
-import { useAlert } from "react-alert";
+import { ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [textPassword, setTextPassword] = useState(false);
-  const alert = useAlert();
+  const [passwordError, setPasswordError] = useState("");
 
-  const { createUser, setErrorMessage } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,22 +18,33 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
 
-    createUser(email, password, name, photo)
-      .then(() => {
-        alert.show("registered", {
-          type: "success",
-        });
-        console.log("first");
-      })
-      .catch(() => {
-        alert.show("failed", {
-          type: "error",
-        });
-      });
+    setPasswordError("");
+
+    const uppercaseRegex = /^(?=.*[A-Z])/;
+    const lowercaseRegex = /^(?=.*[a-z])/;
+    const lengthRegex = /^.{6,}$/;
+
+    if (!uppercaseRegex.test(password)) {
+      setPasswordError("Password must have at least one uppercase letter.");
+      return;
+    }
+
+    if (!lowercaseRegex.test(password)) {
+      setPasswordError("Password must have at least one lowercase letter.");
+      return;
+    }
+
+    if (!lengthRegex.test(password)) {
+      setPasswordError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    createUser(email, password, name, photo, form);
   };
 
   return (
     <div>
+      <ToastContainer />
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col md:flex-row-reverse gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
@@ -104,6 +115,9 @@ const Register = () => {
                   >
                     {textPassword ? <FiEye /> : <FiEyeOff />}
                   </div>
+                  {passwordError && (
+                    <p className="text-red-700 text-sm mt-1">{passwordError}</p>
+                  )}
                 </div>
                 <label className="label label-text-alt justify-start">
                   Already have an account?{" "}

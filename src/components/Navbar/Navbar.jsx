@@ -1,6 +1,23 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Signed out!");
+        console.log("out");
+      })
+      .catch(() => {
+        toast.error("Sign out failed!");
+        console.log("not out");
+      });
+  };
+
   const navLinks = (
     <>
       <li>
@@ -23,6 +40,7 @@ const Navbar = () => {
               ? "border font-semibold text-[#3771FE]"
               : "border  font-semibold text-gray-600"
           }
+          to="/allArts"
         >
           All Arts
         </NavLink>
@@ -34,6 +52,7 @@ const Navbar = () => {
               ? "border font-semibold text-[#3771FE]"
               : "border  font-semibold text-gray-600"
           }
+          to="/addArts"
         >
           Add Arts
         </NavLink>
@@ -82,6 +101,9 @@ const Navbar = () => {
           <Link to="/login" className="btn">
             Login
           </Link>
+          <button className="btn" onClick={handleLogOut}>
+            Logout
+          </button>
         </div>
       </div>
     </div>
