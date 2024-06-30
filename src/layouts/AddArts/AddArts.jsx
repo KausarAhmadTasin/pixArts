@@ -3,15 +3,26 @@ import { useState } from "react";
 
 const AddArts = () => {
   const [isClearable, setIsClearable] = useState(true);
-  const [rating, setRating] = useState(0);
+  const [customizable, setCustomizable] = useState("yes");
+  const [stockStatus, setStockStatus] = useState("inStock");
+  const [rating, setRating] = useState(1);
 
   const [subCategories, setSubCategories] = useState([
     { value: "red", label: "Red" },
     { value: "blue", label: "Blue" },
-    { value: "blue", label: "Blue" },
-    { value: "blue", label: "Blue" },
-    { value: "blue", label: "Blue" },
+    { value: "green", label: "Green" },
   ]);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(
+    subCategories[0]
+  );
+
+  const handleCustomizableChange = (e) => {
+    setCustomizable(e.target.value);
+  };
+
+  const handleStockStatusChange = (e) => {
+    setStockStatus(e.target.value);
+  };
 
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -21,17 +32,26 @@ const AddArts = () => {
     const photo = form.photo.value;
     const price = form.price.value;
     const proccessTime = form.proccessTime.value;
-    const ratings = rating;
+    const userName = form.userName.value;
+    const userEmail = form.userEmail.value;
+    const description = form.description.value;
 
     const item = {
       itemName,
       photo,
       price,
       proccessTime,
-      ratings,
+      userName,
+      userEmail,
+      rating,
+      description,
+      stockStatus,
+      customizable,
+      selectedSubCategory,
     };
     console.log(item);
   };
+
   return (
     <div className="w-2/3 mx-auto bg-[#F1F2F5] py-6 rounded-2xl my-8">
       <form onSubmit={handleAddItem}>
@@ -39,7 +59,7 @@ const AddArts = () => {
         <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text  text-gray-500 font-semibold">
+              <span className="label-text text-gray-500 font-semibold">
                 Item Name<span className="text-red-600">*</span>
               </span>
             </div>
@@ -52,7 +72,7 @@ const AddArts = () => {
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text  text-gray-500 font-semibold">
+              <span className="label-text text-gray-500 font-semibold">
                 Photo URL<span className="text-red-600">*</span>
               </span>
             </div>
@@ -65,7 +85,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Second Row */}
-        <div className="flex justify-center gap-x-6  my-4">
+        <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -83,7 +103,7 @@ const AddArts = () => {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
-                Proccessing Time<span className="text-red-600">*</span>
+                Processing Time<span className="text-red-600">*</span>
               </span>
             </div>
             <input
@@ -95,26 +115,24 @@ const AddArts = () => {
           </label>
         </div>
         {/* Third Row */}
-        <div className="flex justify-center gap-x-6  my-4">
+        <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Rating<span className="text-red-600">*</span>
               </span>
             </div>
-            {/* Rating */}
             <div className="rating mt-3 space-x-2">
               {[1, 2, 3, 4, 5].map((value) => (
-                <label key={value}>
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={value}
-                    className="mask mask-star-2 bg-orange-400"
-                    checked={rating === value}
-                    onChange={() => setRating(value)}
-                  />
-                </label>
+                <input
+                  key={value}
+                  type="radio"
+                  name="rating"
+                  value={value}
+                  className="mask mask-star-2 bg-orange-400"
+                  checked={rating === value}
+                  onChange={() => setRating(value)}
+                />
               ))}
             </div>
           </label>
@@ -129,10 +147,11 @@ const AddArts = () => {
                 <span className="label-text">Yes</span>
                 <input
                   type="radio"
-                  name="availabe"
+                  name="customizable"
                   className="radio checked:bg-green-500"
-                  defaultChecked
                   value="yes"
+                  checked={customizable === "yes"}
+                  onChange={handleCustomizableChange}
                 />
               </label>
             </div>
@@ -141,30 +160,29 @@ const AddArts = () => {
                 <span className="label-text">No</span>
                 <input
                   type="radio"
-                  name="availabe"
-                  value="no"
+                  name="customizable"
                   className="radio checked:bg-red-500"
+                  value="no"
+                  checked={customizable === "no"}
+                  onChange={handleCustomizableChange}
                 />
               </label>
             </div>
           </label>
         </div>
-
         {/* Fourth Row */}
-        <div className="flex items-center justify-center gap-x-6 my-4">
+        <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 User Name<span className="text-red-600">*</span>
               </span>
             </div>
-            <Select
-              className="input-bordered w-full h- max-w-xs"
-              classNamePrefix="select"
-              defaultValue={subCategories[0]}
-              isClearable={isClearable}
-              name="subCategories"
-              options={subCategories}
+            <input
+              type="text"
+              name="userName"
+              placeholder="User Name"
+              className="input input-bordered w-full max-w-xs"
             />
           </label>
           <label className="form-control w-full max-w-xs">
@@ -174,22 +192,40 @@ const AddArts = () => {
               </span>
             </div>
             <input
-              type="text"
-              placeholder="Ex: karim@gmail.com"
+              type="email"
+              placeholder="Ex: 3 days"
+              name="userEmail"
               className="input input-bordered w-full max-w-xs"
             />
           </label>
         </div>
-
+        {/* Fifth Row */}
+        <div className=" gap-x-6 w-2/3 mx-auto my-6">
+          <label className="form-control">
+            <div className="label">
+              <span className="label-text text-gray-500 font-semibold">
+                Sub-Category<span className="text-red-600">*</span>
+              </span>
+            </div>
+            <Select
+              className="input-bordered w-full"
+              classNamePrefix="select"
+              defaultValue={subCategories[0]}
+              isClearable={isClearable}
+              name="subCategories"
+              options={subCategories}
+              onChange={(option) => setSelectedSubCategory(option)}
+            />
+          </label>
+        </div>
         {/* Last Row */}
-        <div className="flex  justify-center gap-x-6 my-4">
+        <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Stock Status<span>*</span>
               </span>
             </div>
-            {/* Stock Status */}
             <div className="form-control w-2/3">
               <label className="label cursor-pointer">
                 <span className="label-text">In Stock</span>
@@ -198,7 +234,8 @@ const AddArts = () => {
                   name="stockStatus"
                   value="inStock"
                   className="radio checked:bg-green-500"
-                  defaultChecked
+                  checked={stockStatus === "inStock"}
+                  onChange={handleStockStatusChange}
                 />
               </label>
               <label className="label cursor-pointer">
@@ -207,6 +244,8 @@ const AddArts = () => {
                   type="radio"
                   name="stockStatus"
                   value="madeToOrder"
+                  checked={stockStatus === "madeToOrder"}
+                  onChange={handleStockStatusChange}
                   className="radio checked:bg-blue-500"
                 />
               </label>
@@ -215,6 +254,8 @@ const AddArts = () => {
                 <input
                   type="radio"
                   name="stockStatus"
+                  checked={stockStatus === "outOfStock"}
+                  onChange={handleStockStatusChange}
                   value="outOfStock"
                   className="radio checked:bg-red-600"
                 />
@@ -229,6 +270,7 @@ const AddArts = () => {
             </div>
             <textarea
               placeholder="Description"
+              name="description"
               className="textarea w-full h-full mx-auto flex items-center justify-center textarea-bordered textarea-sm"
             ></textarea>
           </label>
