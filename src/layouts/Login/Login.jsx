@@ -3,7 +3,7 @@ import SocialLinks from "../../components/SocialLinks/SocialLinks";
 import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [textPassword, setTextPassword] = useState(false);
@@ -16,7 +16,7 @@ const Login = () => {
     const password = form.password.value;
     signIn(email, password)
       .then(() => {
-        toast.success("Logged in!");
+        toast.success("Signed in!");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -25,7 +25,6 @@ const Login = () => {
 
   return (
     <div>
-      <ToastContainer />
       <div className="hero bg-base-200 h-screen">
         <div className="hero-content flex-col md:flex-row gap-x-8">
           <div className="text-center md:text-left md:w-1/3">

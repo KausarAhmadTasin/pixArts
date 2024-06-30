@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
-import { ToastContainer } from "react-toastify";
+import SocialLinks from "../../components/SocialLinks/SocialLinks";
 
 const Register = () => {
   const [textPassword, setTextPassword] = useState(false);
@@ -44,7 +44,6 @@ const Register = () => {
 
   return (
     <div>
-      <ToastContainer />
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col md:flex-row-reverse gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
@@ -131,10 +130,13 @@ const Register = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn bg-[#7eaf3e] hover:text-[#7eaf3e] text-white text-lg">
-                  Register
-                </button>
+                <input
+                  type="submit"
+                  value="Register"
+                  className="btn bg-[#7eaf3e] hover:text-[#7eaf3e] text-white text-lg"
+                ></input>
               </div>
+              <SocialLinks className="mb-3" />
             </form>
           </div>
         </div>

@@ -2,19 +2,18 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
-  const { logOut } = useContext(AuthContext);
+  const { logOut, user, loading } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
         toast.success("Signed out!");
-        console.log("out");
       })
       .catch(() => {
         toast.error("Sign out failed!");
-        console.log("not out");
       });
   };
 
@@ -25,20 +24,19 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "border font-semibold text-[#3771FE]"
-              : "border  font-semibold text-gray-600"
+              : "border font-semibold text-gray-600"
           }
           to="/"
         >
           Home
         </NavLink>
       </li>
-
       <li>
         <NavLink
           className={({ isActive }) =>
             isActive
               ? "border font-semibold text-[#3771FE]"
-              : "border  font-semibold text-gray-600"
+              : "border font-semibold text-gray-600"
           }
           to="/allArts"
         >
@@ -50,7 +48,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? "border font-semibold text-[#3771FE]"
-              : "border  font-semibold text-gray-600"
+              : "border font-semibold text-gray-600"
           }
           to="/addArts"
         >
@@ -59,6 +57,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -89,7 +88,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="btn btn-ghost text-xl play-right-font gradient-text "
+            className="btn btn-ghost text-xl play-right-font gradient-text"
           >
             PixArts
           </Link>
@@ -98,12 +97,32 @@ const Navbar = () => {
           <ul className="menu menu-horizontal space-x-2 px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
-          <button className="btn" onClick={handleLogOut}>
-            Logout
-          </button>
+          {loading ? (
+            <span className="loading loading-spinner loading-sm mr-3 bg-blue-600"></span>
+          ) : !user ? (
+            <div className="flex gap-x-2">
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+              <Link to="/register" className="btn">
+                Register
+              </Link>
+            </div>
+          ) : (
+            <div className="flex gap-x-2 items-center">
+              <img
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                className="w-11 h-11 rounded-full"
+                src={user?.photoURL}
+                alt="User Profile"
+              />
+              <button className="btn" onClick={handleLogOut}>
+                Logout
+              </button>
+              <Tooltip id="my-tooltip" />
+            </div>
+          )}
         </div>
       </div>
     </div>

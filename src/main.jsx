@@ -6,6 +6,7 @@ import router from "./routes/Routes.jsx";
 import AuthProvider from "./provider/AuthProvider/AuthProvider.jsx";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import "react-tooltip/dist/react-tooltip.css";
 
 const options = {
   // you can also just use 'bottom center'
