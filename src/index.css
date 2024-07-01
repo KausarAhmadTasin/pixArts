@@ -7,8 +7,17 @@
   src: url("/PlaywriteUSTrad-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Trebuchet MS";
+  src: url("/public/trebuc.ttf");
+}
+
 .play-right-font {
   font-family: "Playwrite US Trad", cursive;
+}
+
+body {
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 .gradient-text {

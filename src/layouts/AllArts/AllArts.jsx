@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AllArts = () => {
   const [arts, setArts] = useState([]);
@@ -28,8 +29,13 @@ const AllArts = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h1>All Arts</h1>
+    <div className="container rounded-2xl bg-[#F8F8F8] py-5 px-6 mx-auto">
+      <h1 className="text-4xl font-bold text-center my-6">All Art Items</h1>
+      <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
+        Explore our collection of beautiful art pieces. Each item is crafted
+        with care and passion. Browse through our gallery to find the perfect
+        piece to add to your collection.
+      </p>
       <ul className="grid md:grid-cols-3 gap-6 grid-cols-1">
         {arts.map((art) => (
           <li key={art._id}>
@@ -61,7 +67,9 @@ const AllArts = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{art.itemName}</h2>
+                <h2 className="card-title text-center mx-auto my-2 text-[#3749bb]">
+                  {art.itemName}
+                </h2>
                 <div className="flex items-center">
                   <p>
                     <span className="font-bold mr-1">Category:</span>{" "}
@@ -69,15 +77,23 @@ const AllArts = () => {
                   </p>
                   <p className="text-end">
                     <span className="font-bold mr-1">Price:</span> {art.price}
-                    <span className="text-xl font-bold">৳</span>
+                    <span className="">৳</span>
                   </p>
                 </div>
                 <p className="font-bold flex items-center">
                   <span className="mr-2"> Ratings:</span>
-                  {renderStars(art.rating)}{" "}
+                  <span className="text-xl flex">
+                    {renderStars(art.rating)}{" "}
+                  </span>
                 </p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <Link to={`/artDetails/${art._id}`}>
+                    {" "}
+                    <button className="btn rounded-full bg-yellow-500 text-amber-800">
+                      Detals
+                      <FaArrowRight />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
