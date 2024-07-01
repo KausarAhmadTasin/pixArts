@@ -1,17 +1,22 @@
 import Select from "react-select";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddArts = () => {
+  // eslint-disable-next-line no-unused-vars
   const [isClearable, setIsClearable] = useState(true);
   const [customizable, setCustomizable] = useState("yes");
   const [stockStatus, setStockStatus] = useState("inStock");
   const [rating, setRating] = useState(1);
 
-  const [subCategories, setSubCategories] = useState([
-    { value: "red", label: "Red" },
-    { value: "blue", label: "Blue" },
-    { value: "green", label: "Green" },
-  ]);
+  const subCategories = [
+    { value: "landscapePainting", label: "Landscape Painting" },
+    { value: "portraitDrawing", label: "Portrait Drawing" },
+    { value: "watercolourPainting", label: "Watercolour Painting" },
+    { value: "oilPainting", label: "Oil Painting" },
+    { value: "charcoalSketching", label: "Charcoal Sketching" },
+    { value: "cartoonDrawing", label: "Cartoon Drawing" },
+  ];
   const [selectedSubCategory, setSelectedSubCategory] = useState(
     subCategories[0]
   );
@@ -49,7 +54,23 @@ const AddArts = () => {
       customizable,
       selectedSubCategory,
     };
-    console.log(item);
+
+    fetch("http://localhost:5000/arts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Art item added!");
+          form.reset();
+        } else {
+          toast.error("failed to add art item!");
+        }
+      });
   };
 
   return (
