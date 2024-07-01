@@ -6,12 +6,17 @@ import PrivateRoutes from "./PrivateRoutes";
 import AllArts from "../layouts/AllArts/AllArts";
 import AddArts from "../layouts/AddArts/AddArts";
 import ArtDetails from "../layouts/ArtDetails/ArtDetails";
+import Home from "../layouts/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/login",
         element: <Login />,

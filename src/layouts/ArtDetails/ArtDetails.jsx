@@ -19,8 +19,8 @@ const ArtDetails = () => {
     return stars;
   };
   return (
-    <div className="flex  text-gray-700 container mx-auto gap-x-8 my-10">
-      <div className="w-full">
+    <div className="flex md:flex-row flex-col text-gray-700 items-center container mx-auto gap-x-8 my-10">
+      <div className="w-full min-w-fit">
         <img className="rounded-xl " src={art.photo} alt="" />
       </div>
       <div className="flex  flex-col my-2">
@@ -45,7 +45,7 @@ const ArtDetails = () => {
           </p>
         </div>
 
-        <div className="overflow-x-auto flex-grow mt-3">
+        <div className="overflow-x-auto text-gray-600 mt-3">
           <table className="table">
             <tbody>
               {/* row 1 */}
