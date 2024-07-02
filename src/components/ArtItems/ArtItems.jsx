@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { FaStar, FaRegStar, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const AllArts = () => {
+const ArtItems = () => {
   const [arts, setArts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/arts")
+    fetch("http://localhost:5000/artItems")
       .then((res) => res.json())
       .then((data) => {
         setArts(data);
@@ -29,21 +29,21 @@ const AllArts = () => {
   };
 
   return (
-    <div className="container rounded-2xl mb-10 mt-24 bg-[#F8F8F8] p-6 mx-auto">
-      <h1 className="text-4xl font-bold text-[#333333] text-center mb-6">
-        All Art Items
+    <div className="container rounded-2xl mt-20 bg-[#F8F8F8] py-5 px-6 mx-auto">
+      <h1 className="text-4xl font-bold text-[#333333] text-center my-6">
+        Art Items
       </h1>
       <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
         Explore our collection of beautiful art pieces. Each item is crafted
         with care and passion. Browse through our gallery to find the perfect
         piece to add to your collection.
       </p>
-      <ul className="grid md:grid-cols-3 gap-x-6 gap-y-10  grid-cols-1">
+      <ul className="grid md:grid-cols-3 gap-6 grid-cols-1">
         {arts.map((art) => (
           <li key={art._id}>
             <div className="card card-compact relative bg-base-100 w-96 shadow-xl">
               <span
-                className={`absolute -right-2 h-7 border-none text-white font-normal -top-2 badge ${
+                className={`absolute -right-2 h-7 border-none font-normal text-white -top-2 badge ${
                   art.stockStatus === "inStock"
                     ? "bg-green-500"
                     : art.stockStatus === "madeToOrder"
@@ -91,7 +91,7 @@ const AllArts = () => {
                 <div className="card-actions justify-end">
                   <Link to={`/artDetails/${art._id}`}>
                     {" "}
-                    <button className="btn rounded-full bg-yellow-500 text-amber-800">
+                    <button className="btn rounded-full bg-yellow-500 hover:bg-yellow-400 text-amber-800">
                       Detals
                       <FaArrowRight />
                     </button>
@@ -102,8 +102,15 @@ const AllArts = () => {
           </li>
         ))}
       </ul>
+      <div className="flex justify-center">
+        <Link to="/allArts">
+          <button className="btn w-full my-8 bg-[#333333] font-normal text-white hover:bg-[#414040]">
+            All Arts
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default AllArts;
+export default ArtItems;
