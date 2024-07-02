@@ -74,7 +74,7 @@ const AddArts = () => {
   };
 
   return (
-    <div className="w-2/3 mx-auto bg-[#F1F2F5] py-6 rounded-2xl my-8">
+    <div className="w-2/3 mx-auto mt-20 bg-[#ebdcd177] py-6 rounded-2xl my-8">
       <form onSubmit={handleAddItem}>
         {/* First Row */}
         <div className="flex justify-center gap-x-6 my-4">

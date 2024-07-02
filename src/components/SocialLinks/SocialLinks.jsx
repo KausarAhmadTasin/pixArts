@@ -33,11 +33,11 @@ const SocialLinks = () => {
         {" "}
         <FaGithub
           onClick={hangleGithubLogin}
-          className="hover:cursor-pointer hover:scale-110"
+          className=" hover:-translate-y-1 duration-200 hover:scale-105"
         />
         <FcGoogle
           onClick={hangleGoogleLogin}
-          className="hover:cursor-pointer hover:scale-110"
+          className=" hover:-translate-y-1 duration-200 hover:scale-105"
         />
       </div>
     </div>

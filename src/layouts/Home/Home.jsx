@@ -1,71 +1,28 @@
-import AwesomeSlider from "react-awesome-slider";
-import "react-awesome-slider/dist/styles.css";
-import Typewriter from "typewriter-effect";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import Category from "../../components/Category/Category";
+import HomeSlider from "../../components/HomeSlider/HomeSlider";
 
 const Home = () => {
   return (
-    <div className="relative mx-auto">
-      <AwesomeSlider
-        className="absolute top-0 right-0"
-        animation="cubeAnimation"
-      >
-        <div>
-          <img
-            className="max-h-fit blur-0 brightness-50"
-            src="https://i.ibb.co/74FZDgJ/frankie-cordoba-Dva-OIjkr-QTI-unsplash.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            className="max-h-fit blur-0 brightness-50"
-            src="https://i.ibb.co/Lgb5KRt/laura-adai-ZPOl-FNo-U32-Q-unsplash.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <img
-            className="max-h-fit brightness-50"
-            src="https://i.ibb.co/n1dWt2J/kelly-sikkema-o2-TRWThve-I-unsplash.jpg"
-            alt=""
-          />
-        </div>
-
-        <div>
-          <img
-            className="max-h-fit blur-0 brightness-50"
-            src="https://i.ibb.co/Yp3YQj1/debby-hudson-Mz-Sq-FPLo8-CE-unsplash.jpg"
-            alt=""
-          />
-        </div>
-      </AwesomeSlider>
-      <div className="absolute top-40 z-10 left-36 w-3/4 container">
-        <div className="text-white leading-tight w-2/3 text-5xl font-bold h-44">
-          <Typewriter
-            options={{
-              strings: [
-                "Unlock the Magic of Creativity: Share and Buy Art That Inspires!",
-              ],
-              autoStart: true,
-              loop: false,
-              delay: 50,
-              deleteSpeed: 70,
-            }}
-          />
-        </div>
-        <p className="text-xl text-gray-200 w-4/5 my-6">
-          Each artwork you own becomes a source of inspiration, a reminder of
-          the limitless potential within each of us. So, explore the diverse
-          world of art, discover pieces that resonate with you, and let your
-          surroundings reflect the creativity and inspiration that art brings.
+    <>
+      <HomeSlider />
+      {/* Category Section */}
+      <div className=" container mt-32 my-20 mx-auto">
+        <h1 className="text-4xl font-bold text-center my-6">Categories</h1>
+        <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
+          Explore our collection of beautiful art pieces. Each item is crafted
+          with care and passion. Browse through our gallery to find the perfect
+          piece to add to your collection.
         </p>
-
-        <button className="text-gray-100 heartbeat hover:-translate-y-1 duration-500 flex items-center justify-center text-xl">
-          Explore <IoIosArrowRoundForward className="text-3xl mt-1" />
-        </button>
+        <div className="flex justify-center gap-x-3">
+          <Category category={"Landscape Painting"} />
+          <Category category={"Portrait Drawing"} />
+          <Category category={"Watercolour Painting"} />
+          <Category category={"Oil Painting"} />
+          <Category category={"Charcoal Sketching"} />
+          <Category category={"Cartoon Drawing"} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

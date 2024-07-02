@@ -29,7 +29,7 @@ const AllArts = () => {
   };
 
   return (
-    <div className="container rounded-2xl bg-[#F8F8F8] py-5 px-6 mx-auto">
+    <div className="container rounded-2xl mt-20 bg-[#F8F8F8] py-5 px-6 mx-auto">
       <h1 className="text-4xl font-bold text-center my-6">All Art Items</h1>
       <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
         Explore our collection of beautiful art pieces. Each item is crafted

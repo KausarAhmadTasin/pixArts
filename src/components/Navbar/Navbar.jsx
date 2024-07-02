@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 fixed z-30 top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -113,7 +113,7 @@ const Navbar = () => {
               <img
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
-                className="w-11 h-11 rounded-full"
+                className="w-11 h-11 rounded-full z-20"
                 src={user?.photoURL}
                 alt="User Profile"
               />
