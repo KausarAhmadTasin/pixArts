@@ -25,7 +25,7 @@ const CategoryItems = () => {
         <>
           {" "}
           <h1 className="text-4xl font-bold text-[#333333] text-center mb-6">
-            All Art Items
+            Art Items
           </h1>
           <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
             Explore our collection of beautiful art pieces. Each item is crafted
