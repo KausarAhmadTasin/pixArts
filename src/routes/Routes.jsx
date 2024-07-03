@@ -7,11 +7,14 @@ import AllArts from "../layouts/AllArts/AllArts";
 import AddArts from "../layouts/AddArts/AddArts";
 import ArtDetails from "../layouts/ArtDetails/ArtDetails";
 import Home from "../layouts/Home/Home";
+import MyArts from "../layouts/MyArts/MyArts";
+import NotFound from "../layouts/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
@@ -30,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <AllArts></AllArts>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/myArts",
+        element: (
+          <PrivateRoutes>
+            <MyArts></MyArts>
           </PrivateRoutes>
         ),
       },

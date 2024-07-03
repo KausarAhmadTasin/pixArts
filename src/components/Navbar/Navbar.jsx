@@ -50,6 +50,18 @@ const Navbar = () => {
               ? "border font-semibold text-[#3771FE]"
               : "border font-semibold text-gray-600"
           }
+          to="/myArts"
+        >
+          My Arts
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "border font-semibold text-[#3771FE]"
+              : "border font-semibold text-gray-600"
+          }
           to="/addArts"
         >
           Add Arts

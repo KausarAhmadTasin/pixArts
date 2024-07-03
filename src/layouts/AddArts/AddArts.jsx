@@ -1,6 +1,7 @@
 import Select from "react-select";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../provider/AuthProvider/AuthContext";
 
 const AddArts = () => {
   // eslint-disable-next-line no-unused-vars
@@ -28,6 +29,8 @@ const AddArts = () => {
   const handleStockStatusChange = (e) => {
     setStockStatus(e.target.value);
   };
+
+  const { user } = useContext(AuthContext);
 
   const handleAddItem = (e) => {
     e.preventDefault();
@@ -202,6 +205,7 @@ const AddArts = () => {
             <input
               type="text"
               name="userName"
+              value={user.displayName}
               placeholder="User Name"
               className="input input-bordered w-full max-w-xs"
             />
@@ -216,6 +220,7 @@ const AddArts = () => {
               type="email"
               placeholder="Ex: 3 days"
               name="userEmail"
+              value={user.email}
               className="input input-bordered w-full max-w-xs"
             />
           </label>
