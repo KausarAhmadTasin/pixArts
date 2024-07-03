@@ -9,6 +9,7 @@ import ArtDetails from "../layouts/ArtDetails/ArtDetails";
 import Home from "../layouts/Home/Home";
 import MyArts from "../layouts/MyArts/MyArts";
 import NotFound from "../layouts/NotFound/NotFound";
+import CategoryItems from "../layouts/CategoyItems/CategoryItems";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
             <AllArts></AllArts>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/categoryItems/:category",
+        element: (
+          <PrivateRoutes>
+            <CategoryItems></CategoryItems>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.category}`),
       },
       {
         path: "/myArts",

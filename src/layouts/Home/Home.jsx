@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import ArtItems from "../../components/ArtItems/ArtItems";
 import Category from "../../components/Category/Category";
 import HomeSlider from "../../components/HomeSlider/HomeSlider";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="pb-24">
       <HomeSlider />
       {/* Category Section */}
       <div className=" container mt-32 my-20 mx-auto">
@@ -17,12 +18,24 @@ const Home = () => {
           piece to add to your collection.
         </p>
         <div className="flex justify-center gap-x-3">
-          <Category category={"Landscape Painting"} />
-          <Category category={"Portrait Drawing"} />
-          <Category category={"Watercolour Painting"} />
-          <Category category={"Oil Painting"} />
-          <Category category={"Charcoal Sketching"} />
-          <Category category={"Cartoon Drawing"} />
+          <Link to="/categoryItems/landscapePainting">
+            <Category category={"Landscape Painting"} />
+          </Link>
+          <Link to="/categoryItems/portraitDrawing">
+            <Category category={"Portrait Drawing"} />
+          </Link>
+          <Link to="/categoryItems/watercolourPainting">
+            <Category category={"Watercolour Painting"} />
+          </Link>
+          <Link to="/categoryItems/oilPainting">
+            <Category category={"Oil Painting"} />
+          </Link>
+          <Link to="/categoryItems/charcoalSketching">
+            <Category category={"Charcoal Sketching"} />
+          </Link>
+          <Link to="/categoryItems/cartoonDrawing">
+            <Category category={"Cartoon Drawing"} />
+          </Link>
         </div>
       </div>
       {/* Art Items Section */}
