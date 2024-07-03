@@ -44,7 +44,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-base-200 min-h-screen pb-20 pt-24">
         <div className="hero-content flex-col md:flex-row-reverse gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
             <h1 className="text-5xl py-2 font-bold text-[#3771FE] gradient-text">

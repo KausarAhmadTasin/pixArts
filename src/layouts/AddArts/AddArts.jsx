@@ -244,7 +244,7 @@ const AddArts = () => {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
-                Stock Status<span>*</span>
+                Stock Status<span className="text-red-600">*</span>
               </span>
             </div>
             <div className="form-control w-2/3">

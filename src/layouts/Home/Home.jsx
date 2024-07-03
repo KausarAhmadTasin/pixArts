@@ -4,7 +4,7 @@ import HomeSlider from "../../components/HomeSlider/HomeSlider";
 
 const Home = () => {
   return (
-    <>
+    <div className="">
       <HomeSlider />
       {/* Category Section */}
       <div className=" container mt-32 my-20 mx-auto">
@@ -26,10 +26,10 @@ const Home = () => {
         </div>
       </div>
       {/* Art Items Section */}
-      <div className="grid">
+      <div className="mb-16">
         <ArtItems />
       </div>
-    </>
+    </div>
   );
 };
 

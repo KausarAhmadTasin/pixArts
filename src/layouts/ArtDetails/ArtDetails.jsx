@@ -19,7 +19,7 @@ const ArtDetails = () => {
     return stars;
   };
   return (
-    <div className="flex mt-20 md:flex-row flex-col text-gray-700 items-center container mx-auto gap-x-8 my-10">
+    <div className="flex mt-24 md:flex-row flex-col text-gray-700 items-center container mx-auto gap-x-8 my-10">
       <div className="w-full min-w-fit">
         <img className="rounded-xl " src={art.photo} alt="" />
       </div>

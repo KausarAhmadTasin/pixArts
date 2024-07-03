@@ -52,6 +52,7 @@ const HomeSlider = () => {
             options={{
               strings: [
                 "Unlock the Magic of Creativity: Share and Buy Art That Inspires!",
+                "Capturing Creativity, Inspiring Imagination.",
               ],
               autoStart: true,
               loop: true,

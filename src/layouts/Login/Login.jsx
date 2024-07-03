@@ -25,7 +25,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero bg-base-200 h-screen">
+      <div className="hero bg-base-200 h-screen pt-14">
         <div className="hero-content flex-col md:flex-row gap-x-8">
           <div className="text-center md:text-left md:w-1/3">
             <h1 className="text-5xl py-2 font-bold text-[#3771FE] gradient-text">
