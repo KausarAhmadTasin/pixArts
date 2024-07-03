@@ -10,6 +10,7 @@ import Home from "../layouts/Home/Home";
 import MyArts from "../layouts/MyArts/MyArts";
 import NotFound from "../layouts/NotFound/NotFound";
 import CategoryItems from "../layouts/CategoyItems/CategoryItems";
+import UpdateArt from "../layouts/UpdateArt/UpdateArt";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/arts/${params.id}`),
+      },
+      {
+        path: "/updateArt",
+        element: (
+          <PrivateRoutes>
+            <UpdateArt></UpdateArt>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/addArts",

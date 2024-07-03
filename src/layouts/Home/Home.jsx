@@ -39,7 +39,7 @@ const Home = () => {
         </div>
       </div>
       {/* Art Items Section */}
-      <div className="mb-16">
+      <div className="mb-8">
         <ArtItems />
       </div>
     </div>

@@ -2,13 +2,20 @@ import Select from "react-select";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
+import { useLocation } from "react-router-dom";
+import swal from "sweetalert2";
+import { GiElderberry } from "react-icons/gi";
 
-const AddArts = () => {
+const UpdateArt = () => {
   // eslint-disable-next-line no-unused-vars
   const [isClearable, setIsClearable] = useState(true);
   const [customizable, setCustomizable] = useState("yes");
   const [stockStatus, setStockStatus] = useState("inStock");
   const [rating, setRating] = useState(1);
+  const location = useLocation();
+  const { art } = location.state;
+
+  console.log(art);
 
   const subCategories = [
     { value: "landscapePainting", label: "Landscape Painting" },
@@ -32,7 +39,7 @@ const AddArts = () => {
 
   const { user } = useContext(AuthContext);
 
-  const handleAddItem = (e) => {
+  const handleUpdateItem = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -58,27 +65,41 @@ const AddArts = () => {
       selectedSubCategory,
     };
 
-    fetch("http://localhost:5000/arts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          toast.success("Art item added!");
-          form.reset();
+    swal
+      .fire({
+        title: "Are you sure?",
+        text: "Once updated, you will not be able to reverse it!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#17a2b8",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, edit it!",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/myArts/${user.email}/${art._id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(item),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.modifiedCount > 0) {
+                swal.fire("Edited!", "Your art has been edited.", "success");
+              }
+              form.reset();
+            });
         } else {
-          toast.error("failed to add art item!");
+          swal.fire("Failed to edit!", "error");
         }
       });
   };
 
   return (
     <div className="w-2/3 mx-auto mt-28 bg-[#ebdcd177] py-6 rounded-2xl my-8">
-      <form onSubmit={handleAddItem}>
+      <form onSubmit={handleUpdateItem}>
         {/* First Row */}
         <div className="flex justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
@@ -91,6 +112,7 @@ const AddArts = () => {
               type="text"
               placeholder="Item Name"
               name="itemName"
+              defaultValue={art.itemName}
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -103,6 +125,7 @@ const AddArts = () => {
             <input
               type="text"
               placeholder="Photo URL"
+              defaultValue={art.photo}
               name="photo"
               className="input input-bordered w-full max-w-xs"
             />
@@ -119,6 +142,7 @@ const AddArts = () => {
             <input
               type="number"
               min="1"
+              defaultValue={art.price}
               name="price"
               placeholder="1"
               className="input input-bordered w-full max-w-xs"
@@ -132,6 +156,7 @@ const AddArts = () => {
             </div>
             <input
               type="text"
+              defaultValue={art.proccessTime}
               placeholder="Ex: 3 days"
               name="proccessTime"
               className="input input-bordered w-full max-w-xs"
@@ -204,30 +229,32 @@ const AddArts = () => {
             </div>
             <input
               type="text"
+              readOnly
               name="userName"
               value={user.displayName}
               placeholder="User Name"
               className="input input-bordered w-full max-w-xs"
             />
             <p className="text-red-600 text-sm pt-1 ml-1">
-              Name has been taken from your profile*
+              You cannot change name*
             </p>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
-                User Email<span className="text-red-600">*</span>
+                User Email<span className="text-red-600 ">*</span>
               </span>
             </div>
             <input
               type="email"
+              readOnly
               placeholder="Ex: 3 days"
               name="userEmail"
               value={user.email}
               className="input input-bordered w-full max-w-xs"
             />
             <p className="text-red-600 text-sm pt-1 ml-1">
-              Email has been taken from your profile*
+              You cannot change email*
             </p>
           </label>
         </div>
@@ -303,13 +330,14 @@ const AddArts = () => {
             <textarea
               placeholder="Description"
               name="description"
+              defaultValue={art.description}
               className="textarea w-full h-full mx-auto flex items-center justify-center textarea-bordered textarea-sm"
             ></textarea>
           </label>
         </div>
         <input
           type="submit"
-          value="Add Item"
+          value="Update"
           className="btn bg-green-400 text-white mt-8 hover:text-gray-600 w-4/5 mx-auto flex"
         />
       </form>
@@ -317,4 +345,4 @@ const AddArts = () => {
   );
 };
 
-export default AddArts;
+export default UpdateArt;

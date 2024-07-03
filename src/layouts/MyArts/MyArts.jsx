@@ -11,7 +11,6 @@ const MyArts = () => {
   const [filter, setFilter] = useState("all");
 
   const { user } = useContext(AuthContext);
-  console.log(user.email);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myArts/${user.email}`)
@@ -180,14 +179,16 @@ const MyArts = () => {
                         >
                           <MdDelete />
                         </button>
-                        <button
-                          className=" text-indigo-500 border-gray-700 text-xl px-3 py-0"
-                          // onClick={handleEdit}
-                          data-tooltip-id="my-tooltip"
-                          data-tooltip-content="Update"
-                        >
-                          <FaEdit />
-                        </button>
+                        <Link to="/updateArt" state={{ art: art }}>
+                          <button
+                            className=" text-indigo-500 border-gray-700 text-xl px-3 py-0"
+                            // onClick={handleEdit}
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Update"
+                          >
+                            <FaEdit />
+                          </button>
+                        </Link>
                       </div>
                       <Link to={`/artDetails/${art._id}`}>
                         {" "}
