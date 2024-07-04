@@ -13,7 +13,7 @@ const MyArts = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myArts/${user.email}`)
+    fetch(`https://pix-arts-server.vercel.app/myArts/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setArts(data);
@@ -65,9 +65,12 @@ const MyArts = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/myArts/${user.email}/${artId}`, {
-            method: "DELETE",
-          })
+          fetch(
+            `https://pix-arts-server.vercel.app/myArts/${user.email}/${artId}`,
+            {
+              method: "DELETE",
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.deletedCount > 0) {

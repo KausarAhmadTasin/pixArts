@@ -6,7 +6,7 @@ const AllArts = () => {
   const [arts, setArts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/arts")
+    fetch("https://pix-arts-server.vercel.app/arts")
       .then((res) => res.json())
       .then((data) => {
         setArts(data);

@@ -58,7 +58,7 @@ const AddArts = () => {
       selectedSubCategory,
     };
 
-    fetch("http://localhost:5000/arts", {
+    fetch("https://pix-arts-server.vercel.app/arts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,6 +94,7 @@ const AddArts = () => {
               type="text"
               placeholder="Item Name"
               name="itemName"
+              required
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -107,6 +108,7 @@ const AddArts = () => {
               type="text"
               placeholder="Photo URL"
               name="photo"
+              required
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -123,6 +125,7 @@ const AddArts = () => {
               type="number"
               min="1"
               name="price"
+              required
               placeholder="1"
               className="input input-bordered w-full max-w-xs"
             />
@@ -137,6 +140,7 @@ const AddArts = () => {
               type="text"
               placeholder="Ex: 3 days"
               name="proccessTime"
+              required
               className="input input-bordered w-full max-w-xs"
             />
           </label>
@@ -210,6 +214,7 @@ const AddArts = () => {
               name="userName"
               value={user.displayName}
               placeholder="User Name"
+              required
               className="input input-bordered w-full max-w-xs"
             />
             <p className="text-red-600 text-sm pt-1 ml-1">
@@ -226,6 +231,7 @@ const AddArts = () => {
               type="email"
               placeholder="Ex: 3 days"
               name="userEmail"
+              required
               value={user.email}
               className="input input-bordered w-full max-w-xs"
             />
@@ -306,6 +312,7 @@ const AddArts = () => {
             <textarea
               placeholder="Description"
               name="description"
+              required
               className="textarea w-full h-full mx-auto flex items-center justify-center textarea-bordered textarea-sm"
             ></textarea>
           </label>

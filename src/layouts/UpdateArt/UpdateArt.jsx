@@ -75,13 +75,16 @@ const UpdateArt = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/myArts/${user.email}/${art._id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(item),
-          })
+          fetch(
+            `https://pix-arts-server.vercel.app/myArts/${user.email}/${art._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(item),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.modifiedCount > 0) {
@@ -113,6 +116,7 @@ const UpdateArt = () => {
               type="text"
               placeholder="Item Name"
               name="itemName"
+              required
               defaultValue={art.itemName}
               className="input input-bordered w-full max-w-xs"
             />
@@ -126,6 +130,7 @@ const UpdateArt = () => {
             <input
               type="text"
               placeholder="Photo URL"
+              required
               defaultValue={art.photo}
               name="photo"
               className="input input-bordered w-full max-w-xs"
@@ -145,6 +150,7 @@ const UpdateArt = () => {
               min="1"
               defaultValue={art.price}
               name="price"
+              required
               placeholder="1"
               className="input input-bordered w-full max-w-xs"
             />
@@ -159,6 +165,7 @@ const UpdateArt = () => {
               type="text"
               defaultValue={art.proccessTime}
               placeholder="Ex: 3 days"
+              required
               name="proccessTime"
               className="input input-bordered w-full max-w-xs"
             />
@@ -331,6 +338,7 @@ const UpdateArt = () => {
             <textarea
               placeholder="Description"
               name="description"
+              required
               defaultValue={art.description}
               className="textarea w-full h-full mx-auto flex items-center justify-center textarea-bordered textarea-sm"
             ></textarea>

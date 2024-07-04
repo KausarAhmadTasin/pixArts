@@ -33,11 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allArts",
-        element: (
-          <PrivateRoutes>
-            <AllArts></AllArts>
-          </PrivateRoutes>
-        ),
+        element: <AllArts></AllArts>,
       },
       {
         path: "/categoryItems/:category",
@@ -47,7 +43,9 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.category}`),
+          fetch(
+            `https://pix-arts-server.vercel.app/category/${params.category}`
+          ),
       },
       {
         path: "/myArts",
@@ -65,7 +63,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/arts/${params.id}`),
+          fetch(`https://pix-arts-server.vercel.app/arts/${params.id}`),
       },
       {
         path: "/artDetails/:id",
@@ -75,7 +73,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/arts/${params.id}`),
+          fetch(`https://pix-arts-server.vercel.app/arts/${params.id}`),
       },
       {
         path: "/updateArt",
