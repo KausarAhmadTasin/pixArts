@@ -1,6 +1,6 @@
 # Pix-Craft
 
-**Live Site URL**: [Pix-Craft](https://pix-craft.web.app/)
+**Live Site URL**: [Pix-Craft](https://pixarts-67417.web.app/)
 
 ## Overview
 
@@ -12,7 +12,6 @@ Pix-Craft is a vibrant platform for showcasing, selling, and buying art. Artists
 - **Art Gallery**: Explore a diverse collection of artworks from various artists.
 - **CRUD Operations**: Users can add, edit, and delete their own artworks.
 - **Responsive Design**: Seamless experience across devices.
-- **Notifications**: Real-time alerts and notifications for user actions.
 
 ## Technologies Used
 
