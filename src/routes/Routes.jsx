@@ -11,6 +11,7 @@ import MyArts from "../layouts/MyArts/MyArts";
 import NotFound from "../layouts/NotFound/NotFound";
 import CategoryItems from "../layouts/CategoyItems/CategoryItems";
 import UpdateArt from "../layouts/UpdateArt/UpdateArt";
+import MyArtDetails from "../layouts/MyArtDetail/MyArtDetails";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,16 @@ const router = createBrowserRouter([
             <MyArts></MyArts>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/myArtDetails/:id",
+        element: (
+          <PrivateRoutes>
+            <MyArtDetails></MyArtDetails>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/arts/${params.id}`),
       },
       {
         path: "/artDetails/:id",

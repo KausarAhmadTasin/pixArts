@@ -1,10 +1,8 @@
 import Select from "react-select";
 import { useContext, useState } from "react";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../provider/AuthProvider/AuthContext";
 import { useLocation } from "react-router-dom";
 import swal from "sweetalert2";
-import { GiElderberry } from "react-icons/gi";
 
 const UpdateArt = () => {
   // eslint-disable-next-line no-unused-vars
@@ -98,10 +96,13 @@ const UpdateArt = () => {
   };
 
   return (
-    <div className="w-2/3 mx-auto mt-28 bg-[#ebdcd177] py-6 rounded-2xl my-8">
+    <div className="lg:w-2/3 lg:mx-auto mx-3 mt-28 bg-[#ebdcd177] py-6 rounded-2xl my-8">
+      <h1 className="text-3xl font-bold text-[#333333] text-center mb-6">
+        Update Art
+      </h1>
       <form onSubmit={handleUpdateItem}>
         {/* First Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -116,7 +117,7 @@ const UpdateArt = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control  mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Photo URL<span className="text-red-600">*</span>
@@ -132,7 +133,7 @@ const UpdateArt = () => {
           </label>
         </div>
         {/* Second Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -148,7 +149,7 @@ const UpdateArt = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control  mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Processing Time<span className="text-red-600">*</span>
@@ -164,7 +165,7 @@ const UpdateArt = () => {
           </label>
         </div>
         {/* Third Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -185,7 +186,7 @@ const UpdateArt = () => {
               ))}
             </div>
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Customizable<span className="text-red-600">*</span>
@@ -220,7 +221,7 @@ const UpdateArt = () => {
           </label>
         </div>
         {/* Fourth Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -239,7 +240,7 @@ const UpdateArt = () => {
               You cannot change name*
             </p>
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 User Email<span className="text-red-600 ">*</span>
@@ -278,7 +279,7 @@ const UpdateArt = () => {
           </label>
         </div>
         {/* Last Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -321,7 +322,7 @@ const UpdateArt = () => {
               </label>
             </div>
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Item Description<span className="text-red-600">*</span>

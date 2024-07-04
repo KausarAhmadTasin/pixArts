@@ -8,16 +8,16 @@ const Home = () => {
     <div className="pb-24">
       <HomeSlider />
       {/* Category Section */}
-      <div className=" container mt-32 my-20 mx-auto">
-        <h1 className="text-4xl font-bold text-[#333333] text-center my-6">
+      <div className=" md:container mt-32 my-20 md:mx-auto">
+        <h1 className="md:text-4xl text-3xl font-bold text-[#333333] text-center my-6">
           Art Categories
         </h1>
-        <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
+        <p className="text-center text-gray-600 md:w-1/2 mx-4 md:mx-auto mb-12">
           Explore our collection of beautiful art pieces. Each item is crafted
           with care and passion. Browse through our gallery to find the perfect
           piece to add to your collection.
         </p>
-        <div className="flex justify-center gap-x-3">
+        <div className="md:grid justify-center  items-center lg:flex  md:grid-cols-3 grid-cols-1 text-center gap-y-4 mx-3 gap-x-1 md:gap-x-3">
           <Link to="/categoryItems/landscapePainting">
             <Category category={"Landscape Painting"} />
           </Link>
@@ -39,7 +39,7 @@ const Home = () => {
         </div>
       </div>
       {/* Art Items Section */}
-      <div className="mb-8">
+      <div className="md:mb-8">
         <ArtItems />
       </div>
     </div>

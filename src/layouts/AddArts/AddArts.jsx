@@ -77,10 +77,13 @@ const AddArts = () => {
   };
 
   return (
-    <div className="w-2/3 mx-auto mt-28 bg-[#ebdcd177] py-6 rounded-2xl my-8">
+    <div className="lg:w-2/3  lg:mx-auto mx-3 mt-28 bg-[#ebdcd177] py-6 rounded-2xl my-8">
+      <h1 className="text-3xl font-bold text-[#333333] text-center mb-6">
+        Add art
+      </h1>
       <form onSubmit={handleAddItem}>
         {/* First Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col  items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -94,7 +97,7 @@ const AddArts = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Photo URL<span className="text-red-600">*</span>
@@ -109,7 +112,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Second Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -124,7 +127,7 @@ const AddArts = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Processing Time<span className="text-red-600">*</span>
@@ -139,7 +142,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Third Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -160,7 +163,7 @@ const AddArts = () => {
               ))}
             </div>
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 Customizable<span className="text-red-600">*</span>
@@ -195,7 +198,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Fourth Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -213,7 +216,7 @@ const AddArts = () => {
               Name has been taken from your profile*
             </p>
           </label>
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control mt-3 md:mt-0 w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
                 User Email<span className="text-red-600">*</span>
@@ -232,7 +235,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Fifth Row */}
-        <div className=" gap-x-6 w-2/3 mx-auto my-6">
+        <div className=" gap-x-6 md:w-2/3 w-4/5 mx-auto my-6">
           <label className="form-control">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -251,7 +254,7 @@ const AddArts = () => {
           </label>
         </div>
         {/* Last Row */}
-        <div className="flex justify-center gap-x-6 my-4">
+        <div className="flex md:flex-row flex-col items-center justify-center gap-x-6 my-4">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text text-gray-500 font-semibold">
@@ -281,7 +284,7 @@ const AddArts = () => {
                   className="radio checked:bg-blue-500"
                 />
               </label>
-              <label className="label cursor-pointer">
+              <label className="label mt-3 md:mt-0 cursor-pointer">
                 <span className="label-text">Out of Stock</span>
                 <input
                   type="radio"

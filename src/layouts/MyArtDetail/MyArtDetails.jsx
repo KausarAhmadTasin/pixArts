@@ -1,8 +1,14 @@
-import { FaCheck, FaRegStar, FaStar, FaTimes } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { FaCheck, FaEdit, FaRegStar, FaStar, FaTimes } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider/AuthContext";
 
-const ArtDetails = () => {
+const MyArtDetails = () => {
   const art = useLoaderData();
+
+  const { user } = useContext(AuthContext);
 
   const renderStars = (rating) => {
     const totalStars = 5;
@@ -18,16 +24,40 @@ const ArtDetails = () => {
     }
     return stars;
   };
+
+  const handleDelete = (artId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this art!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/myArts/${user.email}/${artId}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your art has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
   return (
-    <div className="flex md:pt-0 pt-14 lg:mt-16 mt-10 md:min-h-screen lg:flex-row flex-col text-gray-700 items-center justify-center lg:container mx-2 lg::mx-auto md:gap-x-8 ">
-      <div className="lg:w-full">
-        <img className="rounded-xl " src={art.photo} alt="" />
+    <div className="flex pt-14 lg:flex-row flex-col text-gray-700 items-center md:mx-8 mx-3 lg:container lg:mx-auto gap-x-8 my-10">
+      <div className="w-full">
+        <img className="rounded-xl mx-auto" src={art.photo} alt="" />
       </div>
       <div className="flex flex-col my-2">
-        <h2 className="text-[#3749bb] text-2xl my-3 text-center lg:text-start md:ml-2">
+        <h2 className="text-[#3749bb] text-2xl lg:my-0 my-4 lg:text-start text-center md:ml-2">
           {art.itemName}
         </h2>
-        <div className="grid md:grid-cols-3 grid-cols-1 mx-4 gap-2 my-3">
+        <div className="grid md:grid-cols-3 grid-cols-1  gap-2 my-3">
           <p className="bg-[#F5F6FC] flex justify-center items-center font-normal  rounded-full py-1 px-3">
             Price: <span className="ml-1 font-semibold">{art.price}৳</span>
           </p>
@@ -45,6 +75,30 @@ const ArtDetails = () => {
             <span className="font-normal mr-1">Process Time: </span>
             {art.proccessTime}
           </p>
+        </div>
+
+        <div
+          className="space-x-3 my-2 flex
+        "
+        >
+          <button
+            className=" text-red-600 flex border items-center gap-x-3 rounded-lg border-red-600 text-xl px-3 py-0"
+            onClick={() => handleDelete(art._id)}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Delete"
+          >
+            Delete: <MdDelete />
+          </button>
+          <Link to="/updateArt" state={{ art: art }}>
+            <button
+              className=" text-indigo-500 border flex items-center gap-x-3 border-indigo-500  rounded-lg text-xl px-3 py-0"
+              // onClick={handleEdit}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="Update"
+            >
+              Edit: <FaEdit />
+            </button>
+          </Link>
         </div>
 
         <div className="overflow-x-auto text-gray-600 mt-3">
@@ -97,4 +151,4 @@ const ArtDetails = () => {
   );
 };
 
-export default ArtDetails;
+export default MyArtDetails;

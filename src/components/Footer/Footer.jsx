@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer md:px-36 flex flex-col md:flex-row justify-between bg-[#333333] text-neutral-content p-10">
-        <aside className="flex items-center gap-x-5">
+      <footer className="footer lg:px-36 flex flex-col md:flex-row justify-between bg-[#333333] text-neutral-content p-10">
+        <aside className="flex mx-auto justify-center items-center gap-x-5">
           <svg
             width="50"
             height="50"
@@ -24,12 +24,12 @@ const Footer = () => {
               PixArts
             </Link>
             <br />
-            <span className="ml-4 text-gray-300 text-base">
+            <span className="md:ml-4 text-gray-300 text-base">
               Capturing Creativity, Inspiring Imagination.
             </span>
           </p>
         </aside>
-        <nav>
+        <nav className="flex flex-col items-center mx-auto">
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
             <Link to="/">

@@ -29,22 +29,22 @@ const AllArts = () => {
   };
 
   return (
-    <div className="container rounded-2xl mb-10 mt-24 bg-[#F8F8F8] p-6 mx-auto">
+    <div className="md:container rounded-2xl mb-10 mt-24 bg-[#F8F8F8] p-6 md:mx-auto">
       {arts.length > 0 ? (
         <>
           {" "}
           <h1 className="text-4xl font-bold text-[#333333] text-center mb-6">
             All Art Items
           </h1>
-          <p className="text-center text-gray-600 w-1/2 mx-auto mb-12">
+          <p className="text-center text-gray-600 lg:w-1/2 mx-auto mb-12">
             Explore our collection of beautiful art pieces. Each item is crafted
             with care and passion. Browse through our gallery to find the
             perfect piece to add to your collection.
           </p>
-          <ul className="grid md:grid-cols-3 gap-x-6 gap-y-10  grid-cols-1">
+          <ul className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-6 gap-y-10 grid-cols-1">
             {arts.map((art) => (
               <li key={art._id}>
-                <div className="card card-compact relative bg-base-100 w-96 shadow-xl">
+                <div className="card card-compact relative bg-base-100 lg:w-96 shadow-xl">
                   <span
                     className={`absolute -right-2 h-7 border-none text-white font-normal -top-2 badge ${
                       art.stockStatus === "inStock"

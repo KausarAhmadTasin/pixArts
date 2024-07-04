@@ -23,8 +23,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "border font-semibold text-[#3771FE]"
-              : "border font-semibold text-gray-600"
+              ? "font-medium border-green-500 border-2 bg-gray-700 text-white"
+              : "font-medium text-white hover:underline underline-offset-8 hover:decoration-sky-500"
           }
           to="/"
         >
@@ -35,8 +35,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "border font-semibold text-[#3771FE]"
-              : "border font-semibold text-gray-600"
+              ? "font-medium border-green-500 border-2 bg-gray-700 text-white"
+              : "font-medium text-white hover:underline underline-offset-8 hover:decoration-sky-500"
           }
           to="/allArts"
         >
@@ -47,8 +47,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "border font-semibold text-[#3771FE]"
-              : "border font-semibold text-gray-600"
+              ? "font-medium border-green-500 border-2 bg-gray-700 text-white"
+              : "font-medium text-white hover:underline underline-offset-8 hover:decoration-sky-500"
           }
           to="/myArts"
         >
@@ -59,8 +59,8 @@ const Navbar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "border font-semibold text-[#3771FE]"
-              : "border font-semibold text-gray-600"
+              ? "font-medium border-green-500 border-2 bg-gray-700 text-white"
+              : "font-medium text-white hover:underline underline-offset-8 hover:decoration-sky-500"
           }
           to="/addArts"
         >
@@ -74,11 +74,11 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-[#333333] shadow-lg shadow-[#928e8e] fixed z-30 top-0">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown md:ml-0 -ml-3 text-white">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-5 bg-[#333]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -93,14 +93,14 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#333] -ml-2 rounded-box z-[1] mt-2 w-52 p-2 shadow"
             >
               {navLinks}
             </ul>
           </div>
           <Link
             to="/"
-            className="btn btn-ghost text-xl play-right-font gradient-text"
+            className="btn md:ml-0 -ml-6 btn-ghost text-xl play-right-font gradient-text"
           >
             PixArts
           </Link>
@@ -113,10 +113,16 @@ const Navbar = () => {
             <span className="loading loading-spinner loading-sm mr-3 bg-blue-600"></span>
           ) : !user ? (
             <div className="flex gap-x-2">
-              <Link to="/login" className="btn">
+              <Link
+                to="/login"
+                className="btn rounded-xl font-medium h-5 border-green-500 border-2 bg-[#333333] hover:bg-[#414040] text-white"
+              >
                 Login
               </Link>
-              <Link to="/register" className="btn">
+              <Link
+                to="/register"
+                className="btn rounded-xl font-medium h-5 border-sky-500 border-2 bg-[#333333] hover:bg-[#414040] text-white"
+              >
                 Register
               </Link>
             </div>
@@ -129,7 +135,10 @@ const Navbar = () => {
                 src={user?.photoURL}
                 alt="User Profile"
               />
-              <button className="btn" onClick={handleLogOut}>
+              <button
+                className="btn rounded-xl font-medium h-5 border-sky-500 border-2 bg-[#333333] hover:bg-[#414040] text-white"
+                onClick={handleLogOut}
+              >
                 Logout
               </button>
               <Tooltip id="my-tooltip" />
