@@ -15,12 +15,12 @@ Pix-Craft is a vibrant platform for showcasing, selling, and buying art. Artists
 
 ## Technologies Used
 
-- **Frontend**: 
+**Frontend**: 
   - React JS
   - Tailwind CSS
   - Firebase Hosting
 
-- **Backend**:
+**Backend**:
   - Express JS
   - MongoDB
   - Vercel
